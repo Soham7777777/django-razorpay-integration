@@ -1,0 +1,7 @@
+## Example .env file for this project
+
+```
+SECRET_KEY = 'YOUR SECRET KEY'
+RAZORPAY_KEY_ID = 'YOUR RAZORPAY KEY ID'
+RAZORPAY_KEY_SECRET = 'YOUR RAZORPAY KEY SECRET'
+```
