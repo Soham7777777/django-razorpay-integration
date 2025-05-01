@@ -22,13 +22,13 @@ class MaxFileSizeValidator:
     def __post_init__(self) -> None:
         min_size, max_size = MaxFileSizeValidator._max_file_size_range
         if self.max_file_size < min_size or self.max_file_size > max_size:
-            raise ValueError(f"The max_file_size ({self.max_file_size}) must be an integer value within {min_size} to {max_size}.")
+            raise ValueError(f'The max_file_size ({self.max_file_size}) must be an integer value within {min_size} to {max_size}.')
         
 
     def __call__(self, value: FieldFile) -> None:
         if value.size > self.max_file_size:
             raise ValidationError(
-                "Ensure that the file size is less than or equal to %(max_size)s bytes.",
+                'Ensure that the file size is less than or equal to %(max_size)s bytes.',
                 code='file_too_large',
                 params={'max_size': str(self.max_file_size)},
             )
@@ -48,7 +48,7 @@ class ImageFormatAndFileExtensionsValidator:
         
         if image_format not in self.image_formats:
             raise ValidationError(
-                "Ensure the image file is in a supported format such as %(formats)s.",
+                'Ensure the image file is in a supported format such as %(formats)s.',
                 code='invalid_image_file_format',
                 params={'formats': str(tuple([str(format) for format in self.image_formats]))}
             )
@@ -56,7 +56,7 @@ class ImageFormatAndFileExtensionsValidator:
         extensions = get_file_extensions_for_image_format(ImageFormat[image_format])
         if PurePath(value.path).suffix not in extensions:
             raise ValidationError(
-                "Ensure the image file has a valid extension(e.g. %(extensions)s) corresponding to its format: %(format)s.",
+                'Ensure the image file has a valid extension(e.g. %(extensions)s) corresponding to its format: %(format)s.',
                 code='mismatch_between_image_file_extension_and_format',
                 params={'extensions': str(extensions), 'format': image_format}
             )
