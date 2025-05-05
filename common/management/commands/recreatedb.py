@@ -2,6 +2,7 @@ import os
 from pathlib import Path, PurePath
 import shutil
 import subprocess
+from typing import override
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.apps import apps
@@ -57,6 +58,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS('✅ Deleted mediaroot successfully!'))
 
 
+    @override
     def handle(self, *args: str, **options: str) -> None:
         self.stdout.write(self.style.HTTP_INFO('🗑️ Removing pycache directories...'))
         self.remove_pycache_dirs()

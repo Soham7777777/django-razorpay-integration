@@ -4,7 +4,7 @@ import django_stubs_ext
 import os
 
 
-Task.__class_getitem__ = classmethod(lambda cls, *args, **kwargs: cls) # type: ignore[attr-defined]
+Task.__class_getitem__ = classmethod(lambda cls, *args, **kwargs: cls)
 django_stubs_ext.monkeypatch()
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
